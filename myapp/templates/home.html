@@ -1,0 +1,19 @@
+<h1>Home</h1>
+{% csrf_token %}
+{% if user.is_authenticated %}
+  <p>{{ user.username }}さん、こんにちは</p>
+  <h2>誕生日一覧</h2>
+  <ul>
+    {% for person in persons %}
+      <li>{{ person.name }} - {{ person.birthday }}</li>
+    {% empty %}
+      <li>誕生日を追加してください</li>
+    {% endfor %}
+  </ul>
+  <p><a href="{% url 'logout' %}">ログアウト</a></p>
+  <p><a href="{% url 'birthday' %}">誕生日を追加</a></p>
+{% else %}
+  <p>ゲストさん、こんにちは</p>
+  <p><a href="{% url 'register' %}">新規登録</a></p>
+  <p><a href="{% url 'login' %}">ログイン</a></p>
+{% endif %}

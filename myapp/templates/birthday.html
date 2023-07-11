@@ -1,0 +1,10 @@
+<h2>誕生日を追加</h2>
+  <form method="post">
+    {% csrf_token %}
+    <label for="birthday">名前:</label>
+    <input type="text" id="name" name="name">
+    <label for="birthday">誕生日:</label>
+    <input type="text" id="birthday" name="birthday">
+    <button type="submit">追加</button>
+  </form>
+  <p><a href="{% url 'home' %}">ホーム</a></p>
